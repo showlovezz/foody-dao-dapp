@@ -1,10 +1,11 @@
-import '../styles/globals.css';
-import '@rainbow-me/rainbowkit/styles.css';
+import { getDefaultWallets,RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import type { AppProps } from 'next/app';
-import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+
+import '../styles/globals.css';
+import '@rainbow-me/rainbowkit/styles.css';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -13,9 +14,9 @@ const { chains, provider, webSocketProvider } = configureChains(
     chain.polygon,
     chain.optimism,
     chain.arbitrum,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-      ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
-      : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ?
+      [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten] :
+      []),
   ],
   [
     alchemyProvider({
@@ -47,6 +48,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       </RainbowKitProvider>
     </WagmiConfig>
   );
-}
+};
 
 export default MyApp;
