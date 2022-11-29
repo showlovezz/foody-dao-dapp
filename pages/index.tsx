@@ -1,13 +1,15 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { Container } from 'react-bootstrap';
 import type { NextPage } from 'next';
+
+import styles from './home.module.scss';
 
 const Home: NextPage = () => {
 	return (
-		<div>
-			<main>
-				<ConnectButton />
-			</main>
-		</div>
+		<article className={styles['home-container']}>
+			<section>
+				<Container></Container>
+			</section>
+		</article>
 	);
 };
 

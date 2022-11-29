@@ -1,0 +1,10 @@
+.home-container:global {
+  height: calc(100vh - 56px);
+  background-image: url(../styles/images//home.png);
+  background-repeat: no-repeat;
+  background-position: left top, right bottom, center center;
+
+  > .container-text {
+    color:red;
+  }
+}
