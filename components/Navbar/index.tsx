@@ -1,13 +1,15 @@
 import { Button, Container, Form, Navbar as BootstrapNavbar } from 'react-bootstrap';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import Axios from 'axios';
+// import Axios from 'axios';
 import type { NextPage } from 'next';
-import { useAccount, useSignMessage } from 'wagmi';
+// import { useAccount } from 'wagmi';
 
-import { useFetchNonce } from './useFetchNonce';
+// import { useAccount, useSignMessage } from 'wagmi';
+
+// import { useFetchNonce } from './useFetchNonce';
 
 const Navbar: NextPage = () => {
-	const { address } = useAccount();
+	// const { address } = useAccount();
 	// const { data: signatureData, signMessageAsync } = useSignMessage({
 	// 	async onSuccess(data) {
 	// 		const nonceData = await Axios({
@@ -24,11 +26,11 @@ const Navbar: NextPage = () => {
 	// 	},
 	// });
 
-	const { data: signatureData, signMessageAsync } = useSignMessage();
+	// const { data: signatureData, signMessageAsync } = useSignMessage();
 
-	const user = useFetchNonce(address ?? '', signMessageAsync, signatureData ?? '');
+	// const user = useFetchNonce(address ?? '', signMessageAsync, signatureData ?? '');
 
-	console.log(user);
+	// console.log(user);
 
 	return (
 		<BootstrapNavbar bg='light' fixed='top'>
