@@ -26,6 +26,7 @@ export const useFetchNonce = (
 			})
 			.then((response) => {
 				setUser(response);
+				// eslint-disable-next-line no-console
 				console.log(response);
 			})
 			.catch((error) => {
