@@ -8,7 +8,7 @@ import Layout from '../components/Layout';
 
 import '@rainbow-me/rainbowkit/styles.css';
 
-const { chains, provider, webSocketProvider } = configureChains(
+const { chains, provider } = configureChains(
 	[chain.goerli],
 	[
 		alchemyProvider({
@@ -29,7 +29,6 @@ const wagmiClient = createClient({
 	autoConnect: true,
 	connectors,
 	provider,
-	webSocketProvider,
 });
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
