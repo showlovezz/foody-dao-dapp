@@ -3,14 +3,14 @@ import { Button, Container, Form, Navbar as BootstrapNavbar } from 'react-bootst
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 // import Axios from 'axios';
 import type { NextPage } from 'next';
+// import { useAccount } from 'wagmi';
 import { useAccount, useSignMessage } from 'wagmi';
 
 import { fetchUserData } from '../../utilities/duck';
 
 // type SignMessageProps = {
 // 	data: string;
-// 	signMessage: (message: string) => void | undefined;
-// 	signMessageAsync: (message: string) => void | undefined;
+// 	signMessage: () => void;
 // };
 
 const Navbar: NextPage = () => {
@@ -21,19 +21,38 @@ const Navbar: NextPage = () => {
 		user_id: '',
 	});
 	const { address } = useAccount();
-	const { data: signatureData, signMessage } = useSignMessage();
+	const {
+		data: signatureData,
+		signMessageAsync,
+		signMessage,
+	} = useSignMessage({
+		onSuccess(data) {
+			console.log('Success', data);
+		},
+		// async onSuccess(data) {
+		// 	console.log(data);
+		// 	const nonceData = await fetchUserData(address ?? '', data);
+
+		// 	console.log(nonceData);
+		// },
+	});
+
+	console.log(typeof signatureData, signatureData);
+
+	console.log('userData', userData);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				await signMessage({ message: 'Login FoodyDao' });
 			} catch (error) {
-				// eslint-disable-next-line no-console
 				console.log(error);
 			}
 		};
 
-		if (address && !signatureData) {
+		if (address && typeof signatureData === 'undefined') {
+			console.log('Hiiiiiii');
+
 			fetchData();
 		}
 	}, [address, signMessage, signatureData]);
@@ -41,18 +60,13 @@ const Navbar: NextPage = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const { data } = await fetchUserData(address ?? '', signatureData ?? '');
+				const { data } = await fetchUserData(address, signatureData);
 				setUserData({
 					address: data.address,
 					auth_token: data.auth_token,
 					level: data.level,
 					user_id: data.user_id,
 				});
-
-				localStorage.setItem('dapp_address', data.address);
-				localStorage.setItem('dapp_auth_token', data.auth_token);
-				localStorage.setItem('dapp_level', data.level);
-				localStorage.setItem('dapp_user_id', data.user_id);
 			} catch (error) {
 				// eslint-disable-next-line no-console
 				console.log(error);
@@ -60,12 +74,10 @@ const Navbar: NextPage = () => {
 		};
 
 		if (address && signatureData) {
+			console.log('2222');
 			fetchData();
 		}
 	}, [address, signatureData]);
-
-	// eslint-disable-next-line no-console
-	console.log(userData);
 
 	return (
 		<BootstrapNavbar bg='light' fixed='top'>
@@ -91,4 +103,3 @@ const Navbar: NextPage = () => {
 };
 
 export default Navbar;
-// typeof signatureData === 'undefined'

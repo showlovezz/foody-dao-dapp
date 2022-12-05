@@ -25,7 +25,7 @@ export const fetchUserData = (address: string, signature: string) => {
 	if (!address || !signature) return Promise.reject(new Error('miss_options'));
 
 	const headers = { 'Content-Type': 'multipart/form-data' };
-	const url = 'https://foodydao.yuanpo-design.com/verifySignature';
+	const url = 'https://foodydao.yuanpo-design.com/verifySignatureSimple';
 
 	return Axios.post(url, { address, signature }, { headers }).then(({ data }) => {
 		if (!data) {
