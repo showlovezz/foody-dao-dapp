@@ -10,7 +10,7 @@ interface Props {
 const Layout: NextPage<Props> = ({ children }) => {
 	return (
 		<div>
-			<Navbar></Navbar>
+			<Navbar />
 			<main>{children}</main>
 			<Footer />
 		</div>
