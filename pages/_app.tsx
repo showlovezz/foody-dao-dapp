@@ -6,6 +6,7 @@ import { publicProvider } from 'wagmi/providers/public';
 
 import Layout from '../components/Layout';
 
+import '../styles/scss/app.scss';
 import '@rainbow-me/rainbowkit/styles.css';
 
 const { chains, provider, webSocketProvider } = configureChains(
