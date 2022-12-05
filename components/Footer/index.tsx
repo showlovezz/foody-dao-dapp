@@ -1,7 +1,13 @@
 import type { NextPage } from 'next';
 
+import styles from './footer.module.scss';
+
 const Footer: NextPage = () => {
-	return <div>Footer</div>;
+	return (
+		<footer className={styles['footer-container']}>
+			<div>This Demo is made by Po and Vita</div>
+		</footer>
+	);
 };
 
 export default Footer;

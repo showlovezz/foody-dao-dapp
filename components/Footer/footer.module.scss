@@ -1,0 +1,11 @@
+@import '../../styles/scss/variables';
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    background-color: var($light-white);
+
+    > div {
+      padding: 20px 0;
+    }
+}
