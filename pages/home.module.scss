@@ -1,10 +1,23 @@
-.home-container {
-  height: calc(100vh - 64px);
-  background-image: url(../styles/images/home.png);
-  background-repeat: no-repeat;
-  background-position: left top, right bottom, center center;
+.home-content {
+  position: relative;
+}
 
-  > .container-text {
-    color:red;
+.home-content::before {
+  content: '';
+  display: block;
+  background-size: cover;
+  background-image: url(../styles/images/home.png);
+  opacity: 0.4;
+  height: calc(100vh - 120px);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.home-content {
+  section {
+    position: relative;
   }
 }
