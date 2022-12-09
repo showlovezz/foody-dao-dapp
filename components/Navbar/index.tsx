@@ -1,12 +1,13 @@
 import { Button, Container, Form, Navbar as BootstrapNavbar } from 'react-bootstrap';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
+import Link from 'next/link';
 
 const Navbar: NextPage = () => {
 	return (
 		<BootstrapNavbar bg='light' fixed='top'>
-			<Container fluid>
-				<BootstrapNavbar.Brand href='#home'>Foddy Dao</BootstrapNavbar.Brand>
+			<Container>
+				<BootstrapNavbar.Brand href='/'>Foddy Dao</BootstrapNavbar.Brand>
 				<BootstrapNavbar.Toggle />
 				<BootstrapNavbar.Collapse className='justify-content-end'>
 					<Form className='d-flex me-2'>
@@ -16,7 +17,9 @@ const Navbar: NextPage = () => {
 							className='me-2'
 							aria-label='Search'
 						/>
-						<Button variant='outline-primary'>Search</Button>
+						<Link href='/restaurants'>
+							<Button variant='outline-primary'>Search</Button>
+						</Link>
 					</Form>
 					<ConnectButton />
 				</BootstrapNavbar.Collapse>

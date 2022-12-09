@@ -4,6 +4,11 @@
     display: flex;
     justify-content: center;
     background-color: var($light-white);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
 
     > div {
       padding: 20px 0;

@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 
-import Footer from '../Footer';
+import styles from './layout.module.scss';
+
 import Navbar from '../Navbar';
 
 interface Props {
@@ -9,11 +10,10 @@ interface Props {
 
 const Layout: NextPage<Props> = ({ children }) => {
 	return (
-		<div>
+		<main className={styles['layout-content']}>
 			<Navbar />
-			<main>{children}</main>
-			<Footer />
-		</div>
+			{children}
+		</main>
 	);
 };
 
